@@ -58,6 +58,10 @@ RSpec.describe Project do
       project.due_date = 6.months.from_now
       expect(project).to be_on_schedule
     end
+  end
+
+  describe 'a blank project' do
+    let(:project) { Project.new }
 
     it 'properly estimates a blank project' do
       expect(project.completed_velocity).to eq(0)
