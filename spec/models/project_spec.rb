@@ -26,6 +26,26 @@ RSpec.describe Project do
       expect(project.projected_days_remaining.nan?).to be_truthy
       expect(project).not_to be_on_schedule
     end
+
+    it 'stubs an object' do
+      project = Project.new(name: "Project Greenlight")
+      allow(project).to receive(:name)
+      expect(project.name).to be_nil
+    end
+
+    it 'stubs an object again' do
+      project = Project.new(name: "Project Greenlight")
+      allow(project).to receive(:name).and_return("Fred")
+      expect(project.name).to eq("Fred")
+    end
+
+    it 'stubs the class' do
+      allow(Project).to receive(:find).and_return(
+        Project.new(name: "Project Greenlight"))
+      project = Project.find(1)
+      expect(project.name).to eq("Project Greenlight")
+    end
+
   end
 
   describe 'estimates' do

@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
   gem 'capybara', '~> 2.6', '>= 2.6.2'
+  gem 'factory_girl_rails', '~> 4.6'
 end
 
 group :development do
