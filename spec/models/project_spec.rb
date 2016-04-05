@@ -46,6 +46,20 @@ RSpec.describe Project do
       expect(project.name).to eq("Project Greenlight")
     end
 
+    it 'mocks an object' do
+      mock_project = Project.new(name: "Project Greenlight")
+      expect(mock_project).to receive(:name).and_return("Fred")
+      expect(mock_project.name).to eq("Fred")
+    end
+
+    xit 'stubs with multiple returns' do
+      project = Project.new
+      allow(project).to receive(:user_count).and_return(1, 2)
+      assert_equal(1, project.user_count)
+      assert_equal(2, project.user_count)
+      assert_equal(2, project.user_count)
+    end
+
   end
 
   describe 'estimates' do
